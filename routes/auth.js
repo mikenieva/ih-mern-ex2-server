@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
-// const authController = require('./../controllers/authController')
+const authController = require('./../controllers/authController')
+
+const auth = require('./../middleware/auth')
+
 
 /**
  * AUTHJS
@@ -8,7 +11,13 @@ const router = express.Router()
  */
 
 // INICIAR SESIÓN
+router.post('/', authController.loginUser)
+
 
 // VERIFICAR SESIÓN
+router.get("/", auth, authController.verifyingToken)
+
+
+
 
 module.exports = router
