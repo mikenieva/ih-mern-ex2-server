@@ -13,11 +13,11 @@ exports.createUser = async (req, res) => {
 
     // NO HAYA ERRORES
     if(!errors.isEmpty()){
+
         return res.status(400).json({
             msg: errors.array()
         })
     }
-
 
     const { username, email, password } = req.body
 
@@ -59,12 +59,12 @@ exports.createUser = async (req, res) => {
             }
         )
 
-
-
-
-
     } catch (error) {
-        console.log(error)   
+
+        return res.status(400).json({
+            msg: error
+        })
+
     }
 
 }
